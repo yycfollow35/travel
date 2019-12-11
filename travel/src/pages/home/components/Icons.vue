@@ -1,6 +1,6 @@
 <template>
 <div class="icons">
-  <swiper>
+  <swiper :options="swiperOption">
     <swiper-slide v-for="(page, index) of pages" :key= "index">
       <div class="icon" v-for="item of page" :key="item.id">
         <div class="icon-img">
@@ -16,52 +16,20 @@
 export default
 {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
       return {
-          iconList: [{
-              id: '0001',
-              imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-              desc: '景点门票'
-          },{
-              id: '0002',
-              imgUrl: 'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/3ef092d0a89ffddb7f781cda30c8ae49.png',
-              desc: '错峰出游'   
-          },{
-              id: '0003',
-              imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
-              desc: '赏秋色'   
-          },{
-              id: '0004',
-              imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-              desc: '一日游'   
-          },{
-              id: '0005',
-              imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-              desc: '景点门票'
-          },{
-              id: '0006',
-              imgUrl: 'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/3ef092d0a89ffddb7f781cda30c8ae49.png',
-              desc: '错峰出游'   
-          },{
-              id: '0007',
-              imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/ea/01d081dacb03cc02.png',
-              desc: '赏秋色'   
-          },{
-              id: '0008',
-              imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-              desc: '一日游'   
-          },{
-              id: '0009',
-              imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-              desc: '景点门票'   
+          swiperOption: {
+              autoplay: false
           }
-          ]
       }
   },
   computed: {
       pages () {
           const pages = []
-          this.iconList.forEach((item,index) => {
+          this.list.forEach((item,index) => {
               const page = Math.floor(index/8)
               if (!pages[page]) {
                   pages[page] = []
@@ -72,7 +40,7 @@ export default
       }
   }
 }
-</script>
+</script> 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
   @import '~styles/mixins.styl'
