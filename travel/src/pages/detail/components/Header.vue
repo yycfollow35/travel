@@ -1,17 +1,17 @@
 <template>
   <div>
     <router-link
-      tag="div" to="/"
+      tag="div"
+      to="/"
       class="header-abs"
-      v-show="showAbs"
-    >
+      v-show="showAbs">
       <div class="iconfont header-abs-back">&#xe618;</div>
     </router-link>
     <div
       class="header-fixed"
       v-show="!showAbs"
       :style="opacityStyle"
-      >
+    >
       <router-link to="/">
         <div class="iconfont header-fixed-back">&#xe618;</div>
       </router-link>
@@ -19,8 +19,9 @@
     </div>
   </div>
 </template>
+
 <script>
-export default{
+export default {
   name: 'DetailHeader',
   data () {
     return {
@@ -33,8 +34,8 @@ export default{
   methods: {
     handleScroll () {
       const top = document.documentElement.scrollTop
-      if (top>60) {
-        let opacity = top/140
+      if (top > 60) {
+        let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
         this.opacityStyle = { opacity }
         this.showAbs = false
@@ -43,10 +44,10 @@ export default{
       }
     }
   },
-  activated () {
+  mounted () {
     window.addEventListener('scroll',this.handleScroll)
   },
-  deactivated () {
+  unmounted () {
     window.removeEventListener('scroll',this.handleScroll)
   }
 }
