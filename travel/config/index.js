@@ -10,14 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
-        target: 'http://ma_yun_yang_yong_chao.gitee.io/travel',
-        pathRewrite: {
-          '^/api': '/static/mock'
-        }
-      }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-    },
+    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
